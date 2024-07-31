@@ -68,11 +68,6 @@ install_rust_deps() {
     cargo version
   fi
 
-  export_statement="export PATH=\$HOME/.cargo/bin:\$PATH"
-  if ! grep -Fxq "$export_statement" ~/.bashrc; then
-    echo "$export_statement" >>"$HOME"/.bashrc
-  fi
-
   if [[ -f "$HOME"/.cargo/env ]]; then
     source "$HOME"/.cargo/env
   fi
