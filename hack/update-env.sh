@@ -5,11 +5,11 @@ set -o nounset
 set -o pipefail
 set -o xtrace
 
-export_statement="export PATH=\$HOME/.huber/bin:\$PATH"
+huber_bin=.huber/bin
 
 shells=(bashrc zshrc)
 for s in "${shells[@]}"; do
-  if [ -f "$HOME"/."$s" ] && ! grep -Fxq "$export_statement" "$HOME"/."$s"; then
-    echo "$export_statement" >>"$HOME"/."$s"
+  if [ -f "$HOME"/."$s" ] && ! [[ ":$PATH:" == *":$HOME/$huber_bin:"* ]]; then
+    echo "export PATH=\$HOME/$huber_bin:\$PATH" >>"$HOME"/."$s"
   fi
 done
