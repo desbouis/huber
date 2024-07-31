@@ -13,8 +13,10 @@ install_linux_deps() {
     sudo apt update
     # sudo apt install -y build-essential
     sudo DEBIAN_FRONTEND=noninteractive apt install -y make libssl-dev libarchive-dev git pkg-config curl sudo
+  elif [[ $(command -v dnf) ]]; then
+    sudo dnf install -y make openssl-devel libarchive-devel git pkgconf-pkg-config curl sudo
   else
-    echo "Only openSUSE, Ubuntu supported" >/dev/stderr
+    echo "Only openSUSE, Ubuntu, Fedora like supported" >/dev/stderr
     exit 1
   fi
 }
