@@ -74,7 +74,9 @@ install_rust_deps() {
 }
 
 install_common_deps() {
-  curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+  if [[ -z $(command -v just 2>/dev/null) ]]; then
+    curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+  fi
 }
 
 os=$(uname)
