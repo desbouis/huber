@@ -290,6 +290,7 @@ fn releases() -> Vec<Package> {
         epinio::release(),
         hypper::release(),
         opni::release(),
+        crane::release(),
         // runtime
         containerd::release(),
         firecracker::release(),
